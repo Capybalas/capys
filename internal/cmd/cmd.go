@@ -8,6 +8,7 @@ import (
 	"github.com/gogf/gf/v2/os/gcmd"
 
 	"capys/internal/controller/hello"
+	"capys/internal/controller/user"
 )
 
 var (
@@ -17,12 +18,21 @@ var (
 		Brief: "start http server",
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 			s := g.Server()
+
 			s.Group("/", func(group *ghttp.RouterGroup) {
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
+
+				group.Group("/user", func(userGroup *ghttp.RouterGroup) {
+					userGroup.Bind(
+						user.NewV1(),
+					)
+				})
+
 				group.Bind(
 					hello.NewV1(),
 				)
 			})
+
 			s.Run()
 			return nil
 		},

@@ -1,4 +1,19 @@
-# GoFrame Template For SingleRepo
+# Capys-OJ
 
-Quick Start: 
-- https://goframe.org/quick
+## Online Judge 在线判题系统
+
+### 功能
+用户模块
+- 用户基本信息
+  - 邮箱
+  - 手机号
+  - 密码
+  - 安全码
+  - 用户权限
+    - 学生
+    - 教师
+    - 管理员
+- 用户信息
+  - 用户名
+  - 学号/工号
+  - 头像
