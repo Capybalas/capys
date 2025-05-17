@@ -8,9 +8,21 @@ import (
 	"capys/internal/service"
 	"context"
 	"strconv"
+
+	"github.com/gogf/gf/v2/frame/g"
+
 )
 
 type sUser struct{}
+
+// ReloadPower implements service.IUser.
+func (s *sUser) ReloadPower(ctx context.Context, id string) (err error) {
+	user := &model.Token{}
+	err = dao.User.Ctx(ctx).WherePri(id).Scan(user)
+	g.Redis().Set(ctx, "user."+id, &user)
+	g.Redis().Expire(ctx, "user."+id, 2*60*60) // 2小时过期
+	return
+}
 
 func (s *sUser) GetOne(ctx context.Context, id any) (user *model.User, err error) {
 	err = dao.User.Ctx(ctx).WherePri(id).Scan(&user)

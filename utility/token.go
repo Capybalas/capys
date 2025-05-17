@@ -2,6 +2,7 @@ package utility
 
 import (
 	"capys/internal/model"
+	"capys/internal/service"
 	"context"
 	"encoding/base64"
 
@@ -37,9 +38,9 @@ func ParseToken(ctx context.Context, token string) (user *model.Context, err err
 		return
 	}
 
-	// if powerValue.IsNil() {
-	// BUG: 重新载入用户权限
-	// }
+	if powerValue.IsNil() {
+		service.User().ReloadPower(ctx, value.String())
+	}
 
 	power := &model.Token{}
 	powerValue.Scan(&power)
