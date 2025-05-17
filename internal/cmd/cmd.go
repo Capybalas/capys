@@ -1,14 +1,14 @@
 package cmd
 
 import (
+	"capys/internal/controller/account"
+	"capys/internal/controller/user"
+	"capys/internal/service"
 	"context"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
-
-	"capys/internal/controller/hello"
-	"capys/internal/controller/user"
 )
 
 var (
@@ -19,18 +19,24 @@ var (
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 			s := g.Server()
 
-			s.Group("/", func(group *ghttp.RouterGroup) {
-				group.Middleware(ghttp.MiddlewareHandlerResponse)
+			s.Group("/", func(baseRouter *ghttp.RouterGroup) {
+				baseRouter.Middleware(ghttp.MiddlewareHandlerResponse)
 
-				group.Group("/user", func(userGroup *ghttp.RouterGroup) {
-					userGroup.Bind(
-						user.NewV1(),
-					)
+				baseRouter.Bind(
+					account.NewV1(),
+				)
+
+				// 需要登陆
+				baseRouter.Group("", func(authRouter *ghttp.RouterGroup) {
+					authRouter.Middleware(service.Middleware().Ctx)
+
+					authRouter.Group("/user", func(userRouter *ghttp.RouterGroup) {
+						userRouter.Bind(
+							user.NewV1(),
+						)
+					})
 				})
 
-				group.Bind(
-					hello.NewV1(),
-				)
 			})
 
 			s.Run()

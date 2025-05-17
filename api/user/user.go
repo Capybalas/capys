@@ -11,5 +11,5 @@ import (
 )
 
 type IUserV1 interface {
-	Create(ctx context.Context, req *v1.CreateReq) (res *v1.CreateRes, err error)
+	UserGetOne(ctx context.Context, req *v1.UserGetOneReq) (res *v1.UserGetOneRes, err error)
 }
