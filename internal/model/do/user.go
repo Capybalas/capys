@@ -18,6 +18,7 @@ type User struct {
 	Password  interface{} //
 	Safe      interface{} //
 	Power     interface{} // 0-一般用户 1-学生 2-教师 3-管理员
+	IsBan     interface{} // 是否封禁
 	CreatedAt *gtime.Time //
 	UpdatedAt *gtime.Time //
 	DeletedAt *gtime.Time //

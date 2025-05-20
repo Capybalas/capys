@@ -27,6 +27,7 @@ type UserColumns struct {
 	Password  string //
 	Safe      string //
 	Power     string // 0-一般用户 1-学生 2-教师 3-管理员
+	IsBan     string // 是否封禁
 	CreatedAt string //
 	UpdatedAt string //
 	DeletedAt string //
@@ -40,6 +41,7 @@ var userColumns = UserColumns{
 	Password:  "password",
 	Safe:      "safe",
 	Power:     "power",
+	IsBan:     "is_ban",
 	CreatedAt: "created_at",
 	UpdatedAt: "updated_at",
 	DeletedAt: "deleted_at",

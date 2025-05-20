@@ -29,6 +29,11 @@ func (s *sAccount) Login(ctx context.Context, account string, password string) (
 		return
 	}
 
+	if user.IsBan {
+		err = errors.New("用户已被封禁")
+		return
+	}
+
 	userPassword := utility.EncryptPassword(password, user.Safe)
 	if userPassword != user.Password {
 		err = errors.New("密码错误")
@@ -48,6 +53,7 @@ func (s *sAccount) Login(ctx context.Context, account string, password string) (
 
 	tokenStruct := &model.Token{
 		Power: user.Power,
+		IsBan: user.IsBan,
 	}
 
 	token := utility.NewToken(id)

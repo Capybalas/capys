@@ -7,6 +7,7 @@ type CreateUserInput struct {
 
 type Token struct {
 	Power uint `json:"power"`
+	IsBan bool `json:"is_ban"`
 }
 
 type User struct {

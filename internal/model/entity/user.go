@@ -16,6 +16,7 @@ type User struct {
 	Password  string      `json:"password"  orm:"password"   description:""`                       //
 	Safe      string      `json:"safe"      orm:"safe"       description:""`                       //
 	Power     uint        `json:"power"     orm:"power"      description:"0-一般用户 1-学生 2-教师 3-管理员"` // 0-一般用户 1-学生 2-教师 3-管理员
+	IsBan     bool        `json:"isBan"     orm:"is_ban"     description:"是否封禁"`                   // 是否封禁
 	CreatedAt *gtime.Time `json:"createdAt" orm:"created_at" description:""`                       //
 	UpdatedAt *gtime.Time `json:"updatedAt" orm:"updated_at" description:""`                       //
 	DeletedAt *gtime.Time `json:"deletedAt" orm:"deleted_at" description:""`                       //

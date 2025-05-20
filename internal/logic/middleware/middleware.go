@@ -23,6 +23,14 @@ func (s *sMiddleware) Ctx(r *ghttp.Request) {
 		r.Exit()
 	}
 
+	if tokenValue.IsBan {
+		r.Response.WriteJson(ghttp.DefaultHandlerResponse{
+			Code:    gcode.CodeNotAuthorized.Code(),
+			Message: "用户已被封禁",
+		})
+		r.Exit()
+	}
+
 	user := &model.Context{
 		Id:    tokenValue.Id,
 		Power: tokenValue.Power,

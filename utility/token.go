@@ -8,7 +8,6 @@ import (
 
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"
-
 )
 
 func NewToken(id string) string {
@@ -48,6 +47,7 @@ func ParseToken(ctx context.Context, token string) (user *model.Context, err err
 	user = &model.Context{
 		Id:    value.String(),
 		Power: power.Power,
+		IsBan: power.IsBan,
 	}
 
 	return

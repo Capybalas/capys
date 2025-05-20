@@ -27,6 +27,7 @@
    2. phone *
    3. password *
    4. safe
+
 2. 写入数据到user_info
    1. username *
    2. id_number *
