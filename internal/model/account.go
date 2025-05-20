@@ -18,5 +18,6 @@ type LoginOut struct {
 	Id       string     `json:"id"`
 	Username string     `json:"username"`
 	IdNumber string     `json:"id_number"`
+	Token    string     `json:"token"`
 	Expire   gtime.Time `json:"expire"`
 }

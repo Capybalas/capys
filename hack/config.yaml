@@ -5,6 +5,7 @@ gfcli:
     dao:
       - link: "mysql:root:root@tcp(127.0.0.1:3306)/capys"
         descriptionTag: true
+        jsonCase: "Snake"
 
   docker:
     build: "-a amd64 -s linux -p temp -ew"

@@ -70,6 +70,7 @@ func (s *sAccount) Login(ctx context.Context, account string, password string) (
 		Id:       id,
 		Username: userInfo.Username,
 		IdNumber: userInfo.IdNumber,
+		Token:    token,
 		Expire:   *ExpireTime,
 	}
 
