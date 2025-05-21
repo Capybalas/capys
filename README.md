@@ -59,6 +59,23 @@ mysql 200ms
 
 group 分组
 
+user 用户
+
+
+user 1 -> group n
+group 1 -> n user
+
+1:1 个人与个人的身份证
+1:n 个人与手机号
+n:n 一个人可以加入多个分组，一个分组有多个人
+
+user 存储用户信息
+group 存储分组信息
+
+user_group 用户-分组中间表
+user_id 指向user
+group_id 指向group
+
 
 
 ## 数据表说明
