@@ -3,6 +3,7 @@ package cmd
 import (
 	"capys/internal/controller/account"
 	"capys/internal/controller/group"
+	"capys/internal/controller/problem"
 	"capys/internal/controller/user"
 	"capys/internal/service"
 	"context"
@@ -40,6 +41,12 @@ var (
 					authRouter.Group("/group", func(groupRouter *ghttp.RouterGroup) {
 						groupRouter.Bind(
 							group.NewV1(),
+						)
+					})
+
+					authRouter.Group("/problem", func(groupRouter *ghttp.RouterGroup) {
+						groupRouter.Bind(
+							problem.NewV1(),
 						)
 					})
 				})

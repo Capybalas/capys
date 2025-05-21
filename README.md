@@ -77,6 +77,29 @@ user_id 指向user
 group_id 指向group
 
 
+## 题库
+
+### 前端题库
+HTML,CSS,JS
+
+- title 简单题目
+- topic 详细题目
+- category 分类
+- difficulty 难度 1,2,3,4,5
+- answer 答案
+- Passing number 通过人数  
+- Participation number 参与人数
+
+
+### 编程语言题库
+Go
+JS
+TS
+Java
+
+
+
+
 
 ## 数据表说明
 

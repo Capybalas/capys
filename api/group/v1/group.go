@@ -5,6 +5,7 @@ import (
 	"capys/utility/casql"
 
 	"github.com/gogf/gf/v2/frame/g"
+
 )
 
 type GroupCreateReq struct {
@@ -16,7 +17,7 @@ type GroupCreateRes struct{}
 
 type GroupUpdateReq struct {
 	g.Meta `path:"/{id}" method:"put" tags:"用户分组" summary:"修改一条用户分组"`
-	Id     string `in:"path" v:"required#无效id|IsNumeric#id不正确|min:1#id不正确"`
+	Id     string `v:"required#无效id|IsNumeric#id不正确|min:1#id不正确"`
 	*model.CreateGroupInput
 }
 
@@ -24,7 +25,7 @@ type GroupUpdateRes struct{}
 
 type GroupGetOneReq struct {
 	g.Meta `path:"/{id}" method:"get" tags:"用户分组" summary:"获取一条用户分组"`
-	Id     string `in:"path" v:"required#无效id|IsNumeric#id不正确|min:1#id不正确"`
+	Id     string `v:"required#无效id|IsNumeric#id不正确|min:1#id不正确"`
 }
 
 type GroupGetOneRes struct {
@@ -42,7 +43,7 @@ type GroupGetListRes struct {
 
 type GroupDeleteReq struct {
 	g.Meta `path:"/{id}" method:"delete" tags:"用户分组" summary:"删除用户分组"`
-	Id     string `in:"path" v:"required#无效id|IsNumeric#id不正确|min:1#id不正确"`
+	Id     string `v:"required#无效id|IsNumeric#id不正确|min:1#id不正确"`
 }
 
 type GroupDeleteRes struct{}
