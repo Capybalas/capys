@@ -1,7 +1,7 @@
-package problem
+package admin
 
 import (
-	v1 "capys/api/problem/v1"
+	v1 "capys/api/admin/v1"
 	"capys/internal/service"
 	"context"
 )

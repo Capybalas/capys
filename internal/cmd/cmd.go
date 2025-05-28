@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"capys/internal/controller/account"
+	"capys/internal/controller/admin"
 	"capys/internal/controller/group"
-	"capys/internal/controller/problem"
 	"capys/internal/controller/user"
 	"capys/internal/service"
 	"context"
@@ -32,6 +32,13 @@ var (
 				baseRouter.Group("", func(authRouter *ghttp.RouterGroup) {
 					authRouter.Middleware(service.Middleware().Ctx)
 
+					// 管理员路由
+					authRouter.Group("/admin", func(group *ghttp.RouterGroup) {
+						group.Bind(
+							admin.NewV1(),
+						)
+					})
+
 					authRouter.Group("/user", func(userRouter *ghttp.RouterGroup) {
 						userRouter.Bind(
 							user.NewV1(),
@@ -41,12 +48,6 @@ var (
 					authRouter.Group("/group", func(groupRouter *ghttp.RouterGroup) {
 						groupRouter.Bind(
 							group.NewV1(),
-						)
-					})
-
-					authRouter.Group("/problem", func(groupRouter *ghttp.RouterGroup) {
-						groupRouter.Bind(
-							problem.NewV1(),
 						)
 					})
 				})

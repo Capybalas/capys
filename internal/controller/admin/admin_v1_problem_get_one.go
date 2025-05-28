@@ -1,9 +1,9 @@
-package problem
+package admin
 
 import (
-	"context"
-	v1 "capys/api/problem/v1"
+	v1 "capys/api/admin/v1"
 	"capys/internal/service"
+	"context"
 )
 
 func (c *ControllerV1) ProblemGetOne(ctx context.Context, req *v1.ProblemGetOneReq) (res *v1.ProblemGetOneRes, err error) {

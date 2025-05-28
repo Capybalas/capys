@@ -2,15 +2,15 @@
 // Code generated and maintained by GoFrame CLI tool. DO NOT EDIT.
 // =================================================================================
 
-package problem
+package admin
 
 import (
 	"context"
 
-	"capys/api/problem/v1"
+	"capys/api/admin/v1"
 )
 
-type IProblemV1 interface {
+type IAdminV1 interface {
 	ProblemCreate(ctx context.Context, req *v1.ProblemCreateReq) (res *v1.ProblemCreateRes, err error)
 	ProblemUpdate(ctx context.Context, req *v1.ProblemUpdateReq) (res *v1.ProblemUpdateRes, err error)
 	ProblemGetOne(ctx context.Context, req *v1.ProblemGetOneReq) (res *v1.ProblemGetOneRes, err error)
