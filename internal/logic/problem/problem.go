@@ -8,11 +8,36 @@ import (
 	"capys/utility/casql"
 	"context"
 
+	"github.com/gogf/gf/v2/database/gdb"
+	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/util/gconv"
-
 )
 
 type sProblem struct{}
+
+// AddNumber implements service.IProblem.
+func (s *sProblem) AddNumber(ctx context.Context, id any, in *model.AddNumber) (err error) {
+
+	data := g.Map{}
+
+	if in.IsPass {
+		data["passing_number"] = gdb.Raw("passing_number+1")
+	}
+
+	if in.IsParticipation {
+		data["participation_number"] = gdb.Raw("participation_number+1")
+	}
+	g.Model("problem").Data(data).WherePri(id).Update()
+	return
+}
+
+// Run implements service.IProblem.
+func (s *sProblem) Run(ctx context.Context, id any, userCode *model.UserSubmitProblem) (out *model.RunInfo, err error) {
+	out = &model.RunInfo{
+		IsPass: true,
+	}
+	return
+}
 
 // Delete implements service.IProblem.
 func (s *sProblem) Delete(ctx context.Context, id any) (err error) {

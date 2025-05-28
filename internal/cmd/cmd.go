@@ -4,6 +4,7 @@ import (
 	"capys/internal/controller/account"
 	"capys/internal/controller/admin"
 	"capys/internal/controller/group"
+	"capys/internal/controller/problem"
 	"capys/internal/controller/user"
 	"capys/internal/service"
 	"context"
@@ -50,6 +51,10 @@ var (
 							group.NewV1(),
 						)
 					})
+
+					authRouter.Bind(
+						problem.NewV1(),
+					)
 				})
 
 			})

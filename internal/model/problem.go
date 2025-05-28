@@ -3,7 +3,6 @@ package model
 import (
 	"capys/internal/enum"
 	"capys/internal/model/entity"
-
 )
 
 type InProblem struct {
@@ -16,4 +15,19 @@ type InProblem struct {
 
 type OutProblem struct {
 	*entity.Problem
+}
+
+type UserSubmitProblem struct {
+	Code   string `json:"code"`
+	IsPass bool   `json:"is_pass"`
+}
+
+// 1 编译错误 2运行超时 3超出内存
+type RunInfo struct {
+	IsPass bool `json:"is_pass"`
+}
+
+type AddNumber struct {
+	IsPass          bool // 通过人数
+	IsParticipation bool // 参与人数
 }
